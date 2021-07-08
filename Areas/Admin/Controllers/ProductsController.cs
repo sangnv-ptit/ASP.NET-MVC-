@@ -38,6 +38,9 @@ namespace WebApplication1.Areas.Admin.Controllers
         // GET: Admin/Products/Create
         public ActionResult Create()
         {
+            List<Category> cate = db.Categories.ToList();
+            SelectList cateList = new SelectList(cate, "ID", "Name");
+            ViewBag.CategoryList = cateList;
             return View();
         }
 

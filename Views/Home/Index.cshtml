@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+}
+<!-- Start Categories  -->
+<div class="categories-shop">
+    <div class="container">
+        <div class="row">
+            @foreach (var categoriesPair in ViewBag.Categories)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    @foreach (var category in categoriesPair)
+                    {
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="~/images/@category.Image" alt="@category.Name" />
+                            <a class="btn hvr-hover" href="#">@category.Name</a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- End Categories -->
+<!-- Start Products  -->
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Featured Products</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <div class="button-group filter-button-group">
+                        <button class="active" data-filter="*">Tất cả</button>
+                        <button data-filter=".top-featured">Sản phẩm mới</button>
+                        <button data-filter=".best-seller">Bán chạy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row special-list">
+            @foreach (var product in ViewBag.Products)
+            {
+                <div class="col-lg-3 col-md-6 special-grid @(product.IsSale ? "best-seller" : "top-featured")" >
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale"> @(product.IsSale ? "Bán chạy" : "Sản phẩm mới")</p>
+                            </div>
+                            <img src="~/images/@product.Image" class="img-fluid" alt="@product.Name">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Xem"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="So sánh"><i class="fas fa-sync-alt"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Yêu thích"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                                <a class="cart" href="#">Thêm vào giỏ hàng</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>@product.Description</h4>
+                            <h5> @product.Price VND</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- End Products  -->
